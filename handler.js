@@ -8,5 +8,5 @@ module.exports.todosConsumer = (event, context, callback) => {
     console.log('Decoded payload:', payload);
   });
 
-  callback(null, "message");
+  callback(null, "ok");
 };
