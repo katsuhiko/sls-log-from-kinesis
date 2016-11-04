@@ -14,5 +14,5 @@ Make sure that you use Serverless v1.
 ## How to use
 
 ```bash
-ACCOUNT_ID=9999 serverless logs -f todosApply -t
+ACCOUNT_ID=9999 serverless logs -f todosConsumer -t
 ```
