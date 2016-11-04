@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.todosApply = (event, context, callback) => {
+module.exports.todosConsumer = (event, context, callback) => {
   console.log('Event:', JSON.stringify(event));
 
   event.Records.forEach(function(record) {
