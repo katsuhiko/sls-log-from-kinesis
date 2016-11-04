@@ -1,0 +1,18 @@
+{
+  "name": "sls-log-from-kinesis",
+  "version": "0.1.0",
+  "description": "To use the CloudWatch Logs from Kinesis Stream.",
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/katsuhiko/sls-log-from-kinesis.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

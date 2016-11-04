@@ -1,0 +1,37 @@
+service: sls-log-from-kinesis
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: ${opt:region, self:custom.defaultRegion}
+  profile: ${self:custom.profiles.${self:provider.stage}}
+
+custom:
+  defaultStage: dev
+  defaultRegion: ap-northeast-1
+  profiles:
+    dev: devSls
+    prod: prodSls
+  writeEnvVars:
+    STAGE: ${self:provider.stage}
+
+package:
+  exclude:
+    - .git/**
+    - README.md
+
+functions:
+  todosApply:
+    handler: handler.todosApply
+    events:
+      - stream:
+          arn: "arn:aws:kinesis:${self:provider.region}:${env:ACCOUNT_ID}:stream/${self:provider.stage}-todos"
+          #arn:
+          #  Fn::Join:
+          #    - ""
+          #    - - "arn:aws:kinesis:${self:provider.region}:"
+          #      - Ref: "AWS::AccountId"
+          #      - ":stream/${self:provider.stage}-todos"
+          batchSize: 1
+          startingPosition: TRIM_HORIZON
